@@ -5,7 +5,7 @@ import {Button} from "@/components/ui/button";
 import InputField from "@/components/Forms/InputField";
 import FooterLink from "@/components/Forms/FooterLink";
 
-const SignUp = () => {
+const SignIn = () => {
 
     const {
         register,
@@ -60,5 +60,5 @@ const SignUp = () => {
         </>
     )
 }
-export default SignUp
+export default SignIn
 

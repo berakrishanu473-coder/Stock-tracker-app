@@ -89,15 +89,15 @@ export const formatArticle = (
     index: number = 0
 ) => ({
   id: isCompanyNews ? Date.now() + Math.random() : article.id + index,
-  headline: article.headline!.trim(),
+  headline: (article.headline || '').trim(),
   summary:
-      article.summary!.trim().substring(0, isCompanyNews ? 200 : 150) + '...',
+      (article.summary || '').trim().substring(0, isCompanyNews ? 200 : 150) + '...',
   source: article.source || (isCompanyNews ? 'Company News' : 'Market News'),
-  url: article.url!,
-  datetime: article.datetime!,
+  url: article.url || '',
+  datetime: article.datetime || 0,
   image: article.image || '',
   category: isCompanyNews ? 'company' : article.category || 'general',
-  related: isCompanyNews ? symbol! : article.related || '',
+  related: isCompanyNews ? (symbol || '') : article.related || '',
 });
 
 export const formatChangePercent = (changePercent?: number) => {

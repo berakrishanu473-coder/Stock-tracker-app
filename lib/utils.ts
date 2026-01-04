@@ -8,6 +8,9 @@ export function cn(...inputs: ClassValue[]) {
 export const formatTimeAgo = (timestamp: number) => {
   const now = Date.now();
   const diffInMs = now - timestamp * 1000; // Convert to milliseconds
+  
+  if (diffInMs < 60000) return 'Just now'; // Less than 1 minute
+  
   const diffInHours = Math.floor(diffInMs / (1000 * 60 * 60));
   const diffInMinutes = Math.floor(diffInMs / (1000 * 60));
 

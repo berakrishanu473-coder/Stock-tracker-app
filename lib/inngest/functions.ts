@@ -82,6 +82,10 @@ export const sendDailyNewsSummary = inngest.createFunction(
         const userNewsSummaries: { user: User; newsContent: string | null }[] = [];
 
         for (const { user, articles } of results) {
+            if (!articles || articles.length === 0) {
+                           userNewsSummaries.push({ user, newsContent: null });
+                            continue;
+            }
             try {
                 const prompt = NEWS_SUMMARY_EMAIL_PROMPT.replace('{{newsData}}', JSON.stringify(articles, null, 2));
 
